@@ -1,6 +1,6 @@
 /** Users table */
 CREATE TABLE users (
-	id int(11) NOT_NULL AUTO_INCREMENT,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	username varchar(30) NOT_NULL,
 	password char(30) NOT_NULL,
 	email varchar(90),
