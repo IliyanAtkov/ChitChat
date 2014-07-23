@@ -12,8 +12,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="30,187,0,0" TextWrapping="Wrap" Text="Email : " VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.024,0.5" FontSize="14"/>
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,183,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.024,0.5" FontSize="14"><Run Text="Gender : "/></TextBlock>
-        <RadioButton Content="Male" RenderTransformOrigin="1.352,-0.348" Margin="132,229,208,122" Checked="RadioButton_Checked"/>
+        <RadioButton Content="Male" RenderTransformOrigin="1.352,-0.348" Margin="140,229,200,122" Checked="RadioButton_Checked"/>
         <RadioButton Content="Female" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.11,2.688" Margin="189,229,0,0" Checked="RadioButton_Checked" Width="71"/>
-        <Button Content="Register" HorizontalAlignment="Left" Margin="155,311,0,0" VerticalAlignment="Top" Width="96" FontSize="15" FontWeight="Bold"/>
+        <Button Content="Register" HorizontalAlignment="Left" Margin="140,312,0,0" VerticalAlignment="Top" Width="96" FontSize="15" FontWeight="Bold"/>
     </Grid>
 </Window>
