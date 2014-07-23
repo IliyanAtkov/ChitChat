@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Register" Height="400" Width="400">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,46,0,0" RenderTransformOrigin="0.333,6.565"/>
+        <TextBox HorizontalAlignment="Left" Name="ÜserName" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,46,0,0" RenderTransformOrigin="0.333,6.565"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="91" FontSize="14"><Run Text="Username :"/><LineBreak/><Run/></TextBlock>
-        <PasswordBox HorizontalAlignment="Left" Margin="140,91,0,0" VerticalAlignment="Top" Width="120" Height="23" RenderTransformOrigin="0.442,0.565"/>
+        <PasswordBox HorizontalAlignment="Left" Name="Password" Margin="140,91,0,0" VerticalAlignment="Top" Width="120" Height="23" RenderTransformOrigin="0.442,0.565"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,91,0,0" TextWrapping="Wrap" Text="Password : " VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.024,0.5" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,122,0,0" TextWrapping="Wrap" Text="Repeat password : " VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.024,0.5" FontSize="14"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="140,136,0,0" VerticalAlignment="Top" Width="120" Height="23" RenderTransformOrigin="0.442,0.565"/>
+        <PasswordBox HorizontalAlignment="Left" Name="RepeatedPassword" Margin="140,136,0,0" VerticalAlignment="Top" Width="120" Height="23" RenderTransformOrigin="0.442,0.565"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,187,0,0" TextWrapping="Wrap" Text="Email : " VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.024,0.5" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,183,0,0"/>
+        <TextBox HorizontalAlignment="Left" Name="Ëmail" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,183,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.024,0.5" FontSize="14"><Run Text="Gender : "/></TextBlock>
         <RadioButton Content="Male" RenderTransformOrigin="1.352,-0.348" Margin="140,229,200,122" Checked="RadioButton_Checked"/>
         <RadioButton Content="Female" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.11,2.688" Margin="189,229,0,0" Checked="RadioButton_Checked" Width="71"/>

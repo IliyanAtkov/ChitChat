@@ -56,6 +56,7 @@
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Registration.cs" />
     <Compile Include="SendRequests.cs" />
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
