@@ -1,0 +1,13 @@
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\bin\Debug\ChitChat.exe.config
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\bin\Debug\ChitChat.exe
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\bin\Debug\ChitChat.pdb
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\ChitChat.csprojResolveAssemblyReference.cache
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\MainWindow.baml
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\MainWindow.g.cs
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\App.g.cs
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\ChitChat_MarkupCompile.cache
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\ChitChat.g.resources
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\ChitChat.Properties.Resources.resources
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\ChitChat.csproj.GenerateResource.Cache
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\ChitChat.exe
+C:\Users\Producenta\Documents\GitHub\ChitChat\ChitChat\ChitChat\obj\Debug\ChitChat.pdb
