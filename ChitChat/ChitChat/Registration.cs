@@ -38,17 +38,17 @@ namespace ChitChat
                     case "Password":
                         validation = PasswordValidation();
                         break;
+                    case "RepeatedPassword":
+                        validation = RepeatedPasswordValidation();
+                        break;
+                    case "Email":
+                        validation = EmailValidation();
+                        break;
                     default:
                         break;
                 }
-                if (columnName == "UserName")
-                {
-                    validation = UserNameValidation();
-                }
 
-                
-
-                return null;
+                return validation;
             }
         }
 
@@ -78,7 +78,7 @@ namespace ChitChat
         }
 
         private string PasswordValidation()
-        {
+        { 
             bool allowedPassword = Regex.IsMatch(Password, @"^\S\w[a-zA-Z0-9_@]+$");
             bool passwordLength = Password.Length <= 20 && Password.Length >= 6;
 
@@ -97,6 +97,34 @@ namespace ChitChat
                 return null;
             }
 
+        }
+
+        private string RepeatedPasswordValidation()
+        {
+            bool IsrepeatedPasswordTheSame = RepeatedPassword == Password;
+            if (IsrepeatedPasswordTheSame)
+            {
+                return null;
+            }
+
+            else
+            {
+                return "Two passwords must be the same";
+            }
+        }
+
+        private string EmailValidation()
+        {
+            bool isEmail = Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (isEmail)
+            {
+                return null;
+            }
+
+            else
+            {
+                return "Invalid email adress";
+            }
         }
     }
 }
