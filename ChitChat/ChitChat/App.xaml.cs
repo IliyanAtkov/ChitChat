@@ -13,5 +13,10 @@ namespace ChitChat
     /// </summary>
     public partial class App : Application
     {
+        void App_Startup(object sender, StartupEventArgs e)
+        {
+            Login loginFrm = new Login();
+            loginFrm.Show();
+        }
     }
 }

@@ -28,5 +28,12 @@ namespace ChitChat
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Register regForm = new Register();
+            regForm.Show();
+            this.Close();
+        }
     }
 }
