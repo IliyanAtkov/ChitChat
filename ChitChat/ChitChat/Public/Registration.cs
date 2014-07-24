@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ChitChat.Private;
 
 namespace ChitChat
 {
@@ -61,9 +62,9 @@ namespace ChitChat
                 return "User Name is Required";
             }
 
-            else if (UserName.Length > 15 && UserName.Length <= 2)
+            else if (UserName.Length > Constants.MAX_USERNAME_LENGHT  && UserName.Length <= Constants.MIN_USERNAME_LENGHT)
             {
-                return "User name length should be at least 3 and maximum 15";
+                return "User name length should be at least 3 and maximum 30 characters long.";
             }
 
             else if(allowedSymbols == false)
