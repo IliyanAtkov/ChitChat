@@ -19,14 +19,10 @@ namespace ChitChat
     /// </summary>
     public partial class Login : Window
     {
+        bool loggedIn = false;
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,6 +30,20 @@ namespace ChitChat
             Register regForm = new Register();
             regForm.Show();
             this.Close();
+        }
+
+        private void Login_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            const string userLog = "chitchat";
+            const string userPass = "123456";
+
+            if (username.Text == userLog && password.Password == userPass)
+            {
+                loggedIn = true;
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+            }
         }
     }
 }

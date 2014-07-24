@@ -5,10 +5,10 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Username :" VerticalAlignment="Top" Margin="20,24,0,0" Width="84" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password :" VerticalAlignment="Top" Margin="20,72,0,0" Width="84" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="121,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="121,72,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Sign in" HorizontalAlignment="Left" Margin="100,111,0,0" VerticalAlignment="Top" Width="93" FontSize="14" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Don't have account? Join our community!" VerticalAlignment="Top" Margin="31,152,0,0" Width="241" FontSize="14" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Name="username" Height="23" Margin="121,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox HorizontalAlignment="Left" Name="password" Margin="121,72,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Sign in" Name="Login_btn" Click="Login_btn_Click_1" HorizontalAlignment="Left" Margin="100,111,0,0" VerticalAlignment="Top" Width="93" FontSize="14" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Don't have account? Join the community!" VerticalAlignment="Top" Margin="31,152,0,0" Width="241" FontSize="14" FontWeight="Bold"/>
         <Button Content="Sign up.." HorizontalAlignment="Left" Margin="85,194,0,0" VerticalAlignment="Top" Width="129" FontSize="14" Click="Button_Click"/>
 
     </Grid>
