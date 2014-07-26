@@ -35,7 +35,14 @@ namespace ChitChat
               
         }
 
-             
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorsOnScreen++;
+            else
+                errorsOnScreen--;
+        }
+
         private void Registation_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = errorsOnScreen == 0;
