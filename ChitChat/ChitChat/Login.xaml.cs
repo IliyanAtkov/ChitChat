@@ -19,7 +19,7 @@ namespace ChitChat
     /// </summary>
     public partial class Login : Window
     {
-        bool loggedIn = false;
+        public bool loggedIn = false;
         public Login()
         {
             InitializeComponent();
@@ -39,11 +39,16 @@ namespace ChitChat
 
             if (username.Text == userLog && password.Password == userPass)
             {
-                loggedIn = true;
+                this.loggedIn = true;
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
             }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
