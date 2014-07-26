@@ -64,6 +64,45 @@ namespace ChitChat
             return result;
         }
 
+        public bool RegisterUser(string username, string password, string email, string ip, string sex)
+        {
+            StringBuilder data = new StringBuilder();
+            string Password = password;
+
+            using (MD5 md5Hash = MD5.Create())
+            {
+                string hash = GetMd5Hash(md5Hash, Password);
+
+                //Verify Hash
+                if (VerifyMd5Hash(md5Hash, Password, hash))
+                {
+                    data.Append("username=");
+                    data.Append(username);
+                    data.Append("&password=");
+                    data.Append(hash);
+                    data.Append("&email=");
+                    data.Append(email);
+                    data.Append("&ip=");
+                    data.Append(ip);
+                    data.Append("&sex=");
+                    data.Append(sex);
+                }
+
+                string dataToSend = data.ToString();
+
+                string result = this.SendData(Constants.REGISTER_URI, dataToSend);
+
+                if (result == "true")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         public string GetMd5Hash(MD5 md5Hash, string input)
         {
             //Convert the input string to a byte array and compute the has
