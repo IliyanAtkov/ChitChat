@@ -63,7 +63,7 @@ namespace ChitChat
                 return "User Name is Required";
             }
 
-            else if (UserName.Length > Constants.MAX_USERNAME_LENGHT  && UserName.Length <= Constants.MIN_USERNAME_LENGHT)
+            else if (UserName.Length > Constants.MAX_USERNAME_LENGTH  && UserName.Length <= Constants.MIN_USERNAME_LENGTH)
             {
                 return "User name length should be at least 3 and maximum 30 characters long.";
             }

@@ -8,9 +8,9 @@ namespace ChitChat.Private
 {
     public static class Constants
     {
-        public static int MAX_USERNAME_LENGHT { get { return 30; } }
+        public static int MAX_USERNAME_LENGTH { get { return 30; } }
 
-        public static int MIN_USERNAME_LENGHT { get { return 2; } }
+        public static int MIN_USERNAME_LENGTH { get { return 2; } }
 
         public static string REGISTER_URI { get { return "http://188.254.209.106:8080/ChitChat/register.php"; } }
 

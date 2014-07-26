@@ -33,7 +33,7 @@
     </Window.Resources>
     <Grid  x:Name="grid">
         <Grid.CommandBindings>
-            <CommandBinding Command="New" CanExecute="AddCustomer_CanExecute" Executed="AddCustomer_Executed" />
+            <CommandBinding Command="New" CanExecute="Registation_CanExecute" Executed="Registation_Executed" />
         </Grid.CommandBindings>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
