@@ -15,5 +15,7 @@ namespace ChitChat.Private
         public static string REGISTER_URI { get { return "http://188.254.209.106:8080/ChitChat/register.php"; } }
 
         public static string LOGIN_URI { get { return "http://188.254.209.106:8080/ChitChat/login.php"; } }
+
+        public static string IPCHECK_URI { get { return "http://checkip.dyndns.org"; } }
     }
 }

@@ -16,3 +16,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `onlineStance` enum('Online','Busy','AFK','Ghost','Offline') COLLATE utf8_bin NOT NULL DEFAULT 'Offline',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
+
+/** Contacts table */
+CREATE TABLE IF NOT EXISTS `contacts` (
+	`request_id` int(11) COLLATE utf8_bin NOT NULL AUTO_INCREMENT,
+	`user_id` int(11) COLLATE utf8_bin NOT NULL,
+	`friend_id` int(11) COLLATE utf8_bin NOT NULL,
+	`accepted` tinyint(1) COLLATE utf8_bin NOT NULL DEFAULT 0,
+	PRIMARY KEY(request_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
