@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ChitChat.Private;
 
 namespace ChitChat
 {
@@ -19,7 +20,20 @@ namespace ChitChat
     /// </summary>
     public partial class Login : Window
     {
-        public bool loggedIn = false;
+        /** Used to check if the user has logged in. By default it's false. */
+        private bool loggedIn;
+
+        public bool LoggedIn
+        {
+            get { return loggedIn; }
+            set { loggedIn = value; }
+        }
+
+        public void LogInUser()
+        {
+            this.LoggedIn = true;
+        }
+
         public Login()
         {
             InitializeComponent();
@@ -34,16 +48,18 @@ namespace ChitChat
 
         private void Login_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            const string userLog = "chitchat";
-            const string userPass = "123456";
+            SendRequests sr = new SendRequests();
+            string canLogin = sr.TryToLogInUser(username.Text, password.Password);
 
-            if (username.Text == userLog && password.Password == userPass)
+            if (canLogin == "true")
             {
-                this.loggedIn = true;
-                MainWindow mw = new MainWindow();
+                LogInUser();
+                MainWindow mw = new MainWindow(LoggedIn);
                 mw.Show();
                 this.Close();
             }
+                
+            
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

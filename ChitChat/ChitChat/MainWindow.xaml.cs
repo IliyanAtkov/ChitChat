@@ -20,10 +20,24 @@ namespace ChitChat
     /// </summary>
     public partial class MainWindow : Window
     {
+        /** Used to check if the user has logged in. By default it's false. */
+        private bool loggedIn;
+
+        public bool LoggedIn
+        {
+            get { return loggedIn; }
+            set { loggedIn = value; }
+        }
+
 
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public MainWindow(bool loggedIn) : this()
+        {
+            LoggedIn = loggedIn;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
