@@ -6,9 +6,12 @@ namespace ChitChat.Public
     public class User
     {
         // Constructor
-        public User()
+        public User(int id, string username, string email, string joinDate, string ip, string info,
+                    string city, string nation, string phone, string sex, string name, int isDonator,
+                    string onlineStance)
         {
-
+            Id = id;
+            Username = username;
         }
 
         //Variables
@@ -50,7 +53,7 @@ namespace ChitChat.Public
         private int isDonator;
 
         /** This is the current stance of the user */
-        private string OnlineStance;
+        private string onlineStance;
 
         //Properties
 
@@ -58,24 +61,28 @@ namespace ChitChat.Public
         public int Id
         {
             get { return id; }
+            set { id = value; }
         }
 
         /** We can get the username, but we can't change it */
         public string Username
         {
             get { return username; }
+            set { username = value; }
         }
 
         /** We can get the email, but we can't change it */
         public string Email
         {
             get { return email; }
+            set { email = value; }
         }
 
         /** We can get the join date, but we can't change it */
         public string JoinDate
         {
             get { return joinDate; }
+            set { joinDate = value; }
         }
 
         /** We can get the ip, and change it if it differs from the old one */
@@ -84,9 +91,9 @@ namespace ChitChat.Public
             get { return ip; }
             set 
             {
-                if (true)
+                if (ip != Misc.GetCurrentIPAddr())
                 {
-                    
+                    ip = Misc.GetCurrentIPAddr();
                 }
             }
         }
@@ -95,48 +102,56 @@ namespace ChitChat.Public
         public string Info
         {
             get { return info; }
+            set { info = value; }
         }
 
         /** We can get the email, but we can't change it */
         public string City
         {
-            get { return email; }
+            get { return city; }
+            set { city = value; }
         }
 
         /** We can get the email, but we can't change it */
         public string Nation
         {
-            get { return email; }
+            get { return nation; }
+            set { nation = value; }
         }
 
         /** We can get the email, but we can't change it */
         public string Phone
         {
-            get { return email; }
+            get { return phone; }
+            set { phone = value; }
         }
 
         /** We can get the email, but we can't change it */
         public string Gender
         {
-            get { return email; }
+            get { return sex; }
+            set { sex = value; }
         }
 
         /** We can get the email, but we can't change it */
         public string Name
         {
-            get { return email; }
+            get { return name; }
+            set { name = value; }
         }
 
         /** We can get the email, but we can't change it */
-        public string IsDonator
+        public int IsDonator
         {
-            get { return email; }
+            get { return isDonator; }
+            set { isDonator = value; }
         }
 
         /** We can get the email, but we can't change it */
         public string OnlineStance
         {
-            get { return email; }
+            get { return onlineStance; }
+            set { onlineStance = value; }
         }
     }
 }

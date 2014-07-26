@@ -4,10 +4,6 @@ namespace ChitChat.Private
 {
     public enum Stances
     {
-        Online = "Online",
-        Busy = "Busy",
-        AFK = "AFK",
-        Ghost = "Ghost",
-        Offline = "Offline",
+        Online, Busy, AFK, Ghost, Invisible
     }
 }
