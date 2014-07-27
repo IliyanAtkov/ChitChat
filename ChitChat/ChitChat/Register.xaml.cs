@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
+using ChitChat.Private;
 
 
 namespace ChitChat
@@ -21,8 +23,19 @@ namespace ChitChat
     /// </summary>
     public partial class Register : Window
     {
+        private const string PasswordIsValid = null;
         private int errorsOnScreen = 0;
+
         private Registration registation = new Registration();
+
+        private string userSex;
+
+        private string user;
+
+        private string userPassword;
+
+        private string userEmail;
+        
         public Register()
         {
 
@@ -30,9 +43,71 @@ namespace ChitChat
             grid.DataContext = registation;
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        public string User
         {
-              
+            get
+            {
+                return user;
+            }
+            private set
+            {
+                user = value;
+            }
+      
+        }
+
+        public string UserSex
+        {
+            get
+            {
+                return userSex;
+            }
+            private set
+            {
+                userSex = value;
+            }
+        }
+
+        public string UserPassword
+        {
+            get
+            {
+                return userPassword;
+            }
+            private set
+            {
+                userPassword = value;
+            }
+        }
+
+        public string UserEmail
+        {
+            get
+            {
+                return userEmail;
+            }
+            private set
+            {
+                userEmail = value;
+            }
+        }
+        private void Sex_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox check = sender as CheckBox;
+            userSex = check.ToString();
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            User = UserName.ToString();
+            UserEmail = Email.ToString();
+
+         //   string passwordResultValidation;
+         //   if (passwordResultValidation != PasswordIsValid)
+         //   {
+         //       MessageBox.Show(passwordResultValidation);
+         //   }
+
         }
 
         private void Validation_Error(object sender, ValidationErrorEventArgs e)
@@ -51,13 +126,43 @@ namespace ChitChat
 
         private void Registration_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Registration cust = grid.DataContext as Registration;
+            Registration registrationForm = grid.DataContext as Registration;
             registation = new Registration();
             grid.DataContext = registation;
             e.Handled = true;
-
         }
-       
-      
+
+    //   private void PasswordValidation()
+    //   {
+    //       string firstFieldPassword = Password.ToString();
+    //       string repeatedPassword = RepeatedPassword.ToString();
+    //       bool arePasswordEqual = firstFieldPassword == repeatedPassword;
+    //
+    //       if (arePasswordEqual == false)
+    //       {
+    //            MessageBox.Show("Passwords are not equal");
+    //       }
+    //
+    //       bool allowedPassword = Regex.IsMatch(firstFieldPassword, @"^\S\w[a-zA-Z0-9_@]+$");
+    //       bool passwordLength = userPassword.Length <= Constants.MAX_PASSWORD_LENGTH
+    //           && userPassword.Length >= Constants.MIN_PASSWORD_LENGTH;
+    //
+    //       if (string.IsNullOrEmpty(userPassword))
+    //       {
+    //           MessageBox.Show("Password is Required");
+    //       }
+    //
+    //       else if (allowedPassword == false && passwordLength == false)
+    //       {
+    //           MessageBox.Show("Password should contain only words, numbers, underscore or @, length should be between 6 and 20");
+    //       }
+    //
+    //       else
+    //       {
+    //            UserPassword = firstFieldPassword;
+    //            return PasswordIsValid;
+    //       }
+    //   }
+
     }
 }

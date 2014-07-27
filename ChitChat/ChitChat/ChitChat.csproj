@@ -53,7 +53,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="PasswordValidator.cs" />
     <Compile Include="Private\Misc.cs" />
     <Compile Include="Private\Stances.cs" />
     <Compile Include="Private\Constants.cs" />

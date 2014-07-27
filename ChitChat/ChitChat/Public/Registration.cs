@@ -9,18 +9,11 @@ using ChitChat.Private;
 
 namespace ChitChat
 {
-    class Registration : IDataErrorInfo
+    public class Registration : IDataErrorInfo
     {
         public string UserName { get; set; }
 
-
-        public string Password { get;  set; }
-
-        public string RepeatedPassword { get;  set; }
-
         public string Email { get;  set; }
-
-        public string Gender { get;  set; }
 
         public string Error
         {
@@ -36,12 +29,6 @@ namespace ChitChat
                 {
                     case "UserName":
                         validation = UserNameValidation();
-                        break;
-                    case "Password":
-                        validation = PasswordValidation();
-                        break;
-                    case "RepeatedPassword":
-                        validation = RepeatedPasswordValidation();
                         break;
                     case "Email":
                         validation = EmailValidation();
@@ -75,43 +62,8 @@ namespace ChitChat
 
             else
             {
+                
                 return null;
-            }
-        }
-
-        private string PasswordValidation()
-        { 
-            bool allowedPassword = Regex.IsMatch(Password, @"^\S\w[a-zA-Z0-9_@]+$");
-            bool passwordLength = Password.Length <= 20 && Password.Length >= 6;
-
-            if (string.IsNullOrEmpty(Password))
-            {
-                return "Password is Required";
-            }
-    
-            else if(allowedPassword == false && passwordLength == false)
-            {
-                return "Password should contain only words, numbers, underscore or @, length should be between 6 and 20";
-            }
-
-            else
-            {
-                return null;
-            }
-
-        }
-
-        private string RepeatedPasswordValidation()
-        {
-            bool IsrepeatedPasswordTheSame = RepeatedPassword == Password;
-            if (IsrepeatedPasswordTheSame)
-            {
-                return null;
-            }
-
-            else
-            {
-                return "Two passwords must be the same";
             }
         }
 
