@@ -6,11 +6,11 @@
         <Menu Height="21" HorizontalAlignment="Left" Name="menu1" VerticalAlignment="Top" Width="792">
             <MenuItem Header="_ChitChat ">
                 <MenuItem Header="_Online Status">
-                    <MenuItem Header="_Online" />
-                    <MenuItem Header="_Busy" />
-                    <MenuItem Header="_AFK" />
-                    <MenuItem Header="_Ghost" />
-                    <MenuItem Header="_Offline" />
+                    <MenuItem Header="_Online" Click="ChitChat_Online_Click" Name="Online" />
+                    <MenuItem Header="_Busy" Click="ChitChat_Busy_Click" Name="Busy" />
+                    <MenuItem Header="_AFK" Click="ChitChat_AFK_Click" Name="AFK" />
+                    <MenuItem Header="_Ghost" Click="ChitChat_Ghost_Click" Name="Ghost" />
+                    <MenuItem Header="_Offline" Click="ChitChat_Offline_Click" Name="Offline" />
                 </MenuItem>
                 <MenuItem Header="Profile..">
                     <MenuItem Header="Change Avatar" />
