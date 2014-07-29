@@ -45,10 +45,10 @@ namespace ChitChat
 
             using(MD5 md5Hash = MD5.Create())
             {
-                string hash = GetMd5Hash(md5Hash, Password);
+                string hash = Misc.GetMd5Hash(md5Hash, Password);
 
                 //Verify Hash
-                if (VerifyMd5Hash(md5Hash, Password, hash))
+                if (Misc.VerifyMd5Hash(md5Hash, Password, hash))
                 {
                     data.Append("username=");
                     data.Append(Username);

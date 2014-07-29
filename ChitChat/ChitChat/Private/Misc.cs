@@ -3,6 +3,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace ChitChat.Private
 {
