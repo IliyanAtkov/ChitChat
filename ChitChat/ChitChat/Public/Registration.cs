@@ -11,6 +11,8 @@ namespace ChitChat
 {
     public class Registration : IDataErrorInfo
     {
+
+
         public string UserName { get; set; }
 
         public string Email { get;  set; }
@@ -43,14 +45,14 @@ namespace ChitChat
 
         private string UserNameValidation()
         {
-            bool allowedSymbols = Regex.IsMatch(UserName, @"^[a-zA-Z0-9_]+$");
-
+           
             if (string.IsNullOrEmpty(UserName))
             {
                 return "User Name is Required";
             }
+            bool allowedSymbols = Regex.IsMatch(UserName, @"^[a-zA-Z0-9_]+$");
 
-            else if (UserName.Length > Constants.MAX_USERNAME_LENGTH  && UserName.Length <= Constants.MIN_USERNAME_LENGTH)
+            if (UserName.Length > Constants.MAX_USERNAME_LENGTH  && UserName.Length <= Constants.MIN_USERNAME_LENGTH)
             {
                 return "User name length should be at least 3 and maximum 30 characters long.";
             }
@@ -69,6 +71,12 @@ namespace ChitChat
 
         private string EmailValidation()
         {
+
+            if (string.IsNullOrEmpty(Email))
+            {
+                return "Email is Required";
+            }
+
             bool isEmail = Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
             if (isEmail)
             {
@@ -82,4 +90,3 @@ namespace ChitChat
         }
     }
 }
-

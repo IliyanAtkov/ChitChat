@@ -5,8 +5,8 @@ namespace ChitChat.Public
 {
     public class User
     {
-        // Constructor
-        public User(int id, string username, string email, string joinDate, string ip, string info,
+
+        public User(int id, string username, string password, string email, string joinDate, string ip, string info,
                     string city, string nation, string phone, string sex, string name, int isDonator,
                     string onlineStance)
         {
@@ -17,7 +17,7 @@ namespace ChitChat.Public
         //Variables
 
         /** User's ID */
-        private int id;
+        private  int id;
 
         /** User's username */
         private string username;
@@ -58,7 +58,7 @@ namespace ChitChat.Public
         //Properties
 
         /** We can get the id, but we can't change it */
-        public int Id
+        public  int Id
         {
             get { return id; }
             set { id = value; }

@@ -33,7 +33,7 @@
     </Window.Resources>
     <Grid  x:Name="grid">
         <Grid.CommandBindings>
-            <CommandBinding Command="New" CanExecute="Registation_CanExecute" Executed="Registration_Executed" />
+            <CommandBinding Command="New" CanExecute="Validation_CanExecute" Executed="Validation_Executed" />
         </Grid.CommandBindings>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -52,15 +52,15 @@
         <Label Target="{Binding ElementName=RepeatedPassword}" Content="Repeat Password :" Grid.Column="0" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Margin="0,15,264,0" Width="129" FontSize="15" />
         <Label Target="{Binding ElementName=Email}" Content="Email : " Grid.Column="0" Grid.Row="3" Margin="0,15,264,0" Width="103" FontSize="15" />
         <Label Target="{Binding ElementName=Sex}" Content="Sex :" Grid.Column="0" Grid.Row="4" Margin="0,15,264,0" Width="103" FontSize="15" />
-        <TextBox HorizontalAlignment="Left" x:Name="UserName" Grid.Column="0" Grid.Row="0" Validation.Error="Validation_Error" Text="{Binding Path=UserName, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=True, ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,14,0,0" RenderTransformOrigin="0.333,6.565"/>
+        <TextBox HorizontalAlignment="Left" x:Name="UserName" Grid.Column="0" Grid.Row="0" Validation.Error="Validation_Error" Text="{Binding Path=UserName, UpdateSourceTrigger= PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,14,0,0" RenderTransformOrigin="0.333,6.565"/>
 
         <PasswordBox HorizontalAlignment="Left" x:Name="Password" Grid.Column="0" Grid.Row="1"  Margin="140,14,0,0" VerticalAlignment="Top" Width="120" Height="27" RenderTransformOrigin="0.442,0.565" />
 
         <PasswordBox HorizontalAlignment="Left" x:Name="RepeatedPassword" Grid.Column="0" Grid.Row="2" Margin="140,14,0,0" VerticalAlignment="Top" Width="120" Height="23" RenderTransformOrigin="0.442,0.565"/>
 
-        <TextBox HorizontalAlignment="Left" Validation.Error="Validation_Error" Text="{Binding UpdateSourceTrigger=LostFocus, Path=Email, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" x:Name="Email" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,14,0,0" Grid.Row="3"/>
+        <TextBox HorizontalAlignment="Left" Validation.Error="Validation_Error" Text="{Binding UpdateSourceTrigger= PropertyChanged, Path=Email, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" x:Name="Email" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,14,0,0" Grid.Row="3"/>
         <RadioButton Content="Male"  RenderTransformOrigin="1.352,-0.348" Margin="140,20,217,3" Checked="Sex_Checked" Grid.Column="0"  Grid.Row="4" FontSize="14"/>
-        <RadioButton Content="Female"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.11,2.688" Grid.Column="0" Margin="200,20,0,0" Checked="Sex_Checked" Width="71" Height="22" Grid.Row="4" FontSize="14"/>
-        <Button Content="Register" HorizontalAlignment="Left" Margin="126,35,0,-63" VerticalAlignment="Top" Width="107" FontSize="19" FontWeight="Bold" Grid.Row="5" Height="32" Click="RegisterButton_Click" />
+        <RadioButton Content="Female" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.11,2.688" Grid.Column="0" Margin="200,20,0,0" Checked="Sex_Checked" Width="71" Height="22" Grid.Row="4" FontSize="14"/>
+        <Button Content="Register" HorizontalAlignment="Left" Margin="126,35,0,-63"  VerticalAlignment="Top" Width="107" FontSize="19" FontWeight="Bold" Grid.Row="5" Height="32" Click="RegisterButton_Click" />
     </Grid>
 </Window>
