@@ -96,29 +96,31 @@ namespace ChitChat
 
         private string PasswordValidation()
         {
-            string firstFieldPassword = Password.ToString();
-            string repeatedPassword = RepeatedPassword.ToString();
-            bool arePasswordEqual = firstFieldPassword == repeatedPassword;
-
-            if (arePasswordEqual == false)
-            {
-                return "Passwords are not equal";
-            }
-
-            bool allowedPassword = Regex.IsMatch(firstFieldPassword, @"^\S\w[a-zA-Z0-9_@]+$");
-            bool passwordLength = firstFieldPassword.Length <= Constants.MAX_PASSWORD_LENGTH
-                && firstFieldPassword.Length >= Constants.MIN_PASSWORD_LENGTH;
+            ///Old code:
+            /// string firstFieldPassword = Password.ToString();
+            ///string repeatedPassword = RepeatedPassword.ToString();
+            string firstFieldPassword = PasswordBox.Password;
+            string repeatedPassword = RepeatedPasswordBox.Password;
 
             if (string.IsNullOrEmpty(firstFieldPassword))
             {
                 return "Password is Required";
             }
-
-            else if (allowedPassword == false && passwordLength == false)
+           
+            bool allowedPassword = Regex.IsMatch(firstFieldPassword, @"^\S\w[a-zA-Z0-9_@]+$");
+            bool passwordLength = firstFieldPassword.Length <= Constants.MAX_PASSWORD_LENGTH && firstFieldPassword.Length >= Constants.MIN_PASSWORD_LENGTH;
+            
+            if (allowedPassword == false && passwordLength == false)
             {
                 return "Password should contain only words, numbers, underscore or @, length should be between 6 and 20";
             }
+            
+            bool arePasswordEqual = (firstFieldPassword == repeatedPassword);
 
+            if (arePasswordEqual == false)
+            {
+                return "Passwords are not equal";
+            }
             else
             {
                 return PasswordIsValid;

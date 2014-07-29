@@ -45,6 +45,7 @@ namespace ChitChat
             LoggedIn = loggedIn;
         }
 
+        #region Events
         private void ChitChat_Online_Click(object sender, RoutedEventArgs e)
         {
             currentUserStance = Stances.Online;
@@ -74,8 +75,8 @@ namespace ChitChat
         {
             this.Close();
         }
-
-        //Variant 2 - less code, but more computation
+    
+        //Variant 2 - less code, but more computation == slower performance
         private void ChitChat_ChangeStatus_Click(object sender, RoutedEventArgs e)
         {
             Button sourceButton = (Button)sender;
@@ -88,6 +89,6 @@ namespace ChitChat
                 case "Offline": currentUserStance = Stances.Offline; break;
             }
         }
-
+        #endregion
     }
 }

@@ -54,9 +54,9 @@
         <Label Target="{Binding ElementName=Sex}" Content="Sex :" Grid.Column="0" Grid.Row="4" Margin="0,15,264,0" Width="103" FontSize="15" />
         <TextBox HorizontalAlignment="Left" x:Name="UserName" Grid.Column="0" Grid.Row="0" Validation.Error="Validation_Error" Text="{Binding Path=UserName, UpdateSourceTrigger= PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,14,0,0" RenderTransformOrigin="0.333,6.565"/>
 
-        <PasswordBox HorizontalAlignment="Left" x:Name="Password" Grid.Column="0" Grid.Row="1"  Margin="140,14,0,0" VerticalAlignment="Top" Width="120" Height="27" RenderTransformOrigin="0.442,0.565" />
+        <PasswordBox HorizontalAlignment="Left" x:Name="PasswordBox" Grid.Column="0" Grid.Row="1"  Margin="140,14,0,0" VerticalAlignment="Top" Width="120" Height="27" RenderTransformOrigin="0.442,0.565" />
 
-        <PasswordBox HorizontalAlignment="Left" x:Name="RepeatedPassword" Grid.Column="0" Grid.Row="2" Margin="140,14,0,0" VerticalAlignment="Top" Width="120" Height="23" RenderTransformOrigin="0.442,0.565"/>
+        <PasswordBox HorizontalAlignment="Left" x:Name="RepeatedPasswordBox" Grid.Column="0" Grid.Row="2" Margin="140,14,0,0" VerticalAlignment="Top" Width="120" Height="23" RenderTransformOrigin="0.442,0.565" />
 
         <TextBox HorizontalAlignment="Left" Validation.Error="Validation_Error" Text="{Binding UpdateSourceTrigger= PropertyChanged, Path=Email, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" x:Name="Email" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="140,14,0,0" Grid.Row="3"/>
         <RadioButton Content="Male"  RenderTransformOrigin="1.352,-0.348" Margin="140,20,217,3" Checked="Sex_Checked" Grid.Column="0"  Grid.Row="4" FontSize="14"/>
