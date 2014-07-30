@@ -15,6 +15,7 @@
     using System.Windows.Navigation;
     using System.Windows.Shapes;
     using ChitChat.Private;
+    using ChitChat.Public;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -41,7 +42,7 @@
             get { return this.loggedIn; }
             set { this.loggedIn = value; }
         }
-        #region Events
+        
         private void ChitChat_Online_Click(object sender, RoutedEventArgs e)
         {
             this.currentUserStance = Stances.Online;
@@ -95,6 +96,5 @@
                     break;
             }
         }
-        #endregion
     }
 }
