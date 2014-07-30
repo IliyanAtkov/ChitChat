@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Text.RegularExpressions;
-using ChitChat.Private;
-using ChitChat.Public;
+﻿namespace ChitChat
+{ 
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    using ChitChat.Private;
+    using ChitChat.Public;
 
-
-namespace ChitChat
-{
     /// <summary>
     /// Interaction logic for Register.xaml
     /// </summary>
@@ -26,15 +25,14 @@ namespace ChitChat
     {
         private const string PasswordIsValid = null;
         private int errorsOnScreen = 0;
-        private bool IsSexChosen = false;
+        private bool isSexChosen = false;
 
         private Registration registation = new Registration();
 
         public Register()
         {
-
-            InitializeComponent();
-            grid.DataContext = registation;
+            this.InitializeComponent();
+            grid.DataContext = this.registation;
         }
  
         private void Sex_Checked(object sender, RoutedEventArgs e)
@@ -43,7 +41,7 @@ namespace ChitChat
             if (value != null)
             {
                 string sex = value.Content.ToString();
-                IsSexChosen = true;
+                this.isSexChosen = true;
             }
 
             e.Handled = true;
@@ -51,46 +49,47 @@ namespace ChitChat
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            string passwordResultValidation = PasswordValidation();
+            string passwordResultValidation = this.PasswordValidation();
             if (passwordResultValidation != PasswordIsValid)
             {
                 MessageBox.Show(passwordResultValidation);
                 e.Handled = true;
             }
-
-            else if(IsSexChosen == false)
+            else if (this.isSexChosen == false)
             {
                 MessageBox.Show("Choose Sex");
                 e.Handled = true;
             }
-
-            else if (errorsOnScreen != 0)
+            else if (this.errorsOnScreen != 0)
             {
                 MessageBox.Show("There are errors you must fix it");
                 e.Handled = true;
             }        
-
         }
 
         private void Validation_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                errorsOnScreen++;
+            {
+                this.errorsOnScreen++;
+            }
             else
-                errorsOnScreen--;
+            {
+                this.errorsOnScreen--;
+            }
         }
 
         private void Validation_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = errorsOnScreen == 0;
+            e.CanExecute = this.errorsOnScreen == 0;
             e.Handled = true;
         }
 
         private void Validation_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Registration registrationForm = grid.DataContext as Registration;
-            registation = new Registration();
-            grid.DataContext = registation;
+            this.registation = new Registration();
+            grid.DataContext = this.registation;
             e.Handled = true;
         }
 
@@ -115,7 +114,7 @@ namespace ChitChat
                 return "Password should contain only words, numbers, underscore or @, length should be between 6 and 20";
             }
             
-            bool arePasswordEqual = (firstFieldPassword == repeatedPassword);
+            bool arePasswordEqual = firstFieldPassword == repeatedPassword;
 
             if (arePasswordEqual == false)
             {

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Net;
-using System.IO;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
-
-namespace ChitChat.Private
+﻿namespace ChitChat.Private
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Net;
+    using System.Security.Cryptography;
+    using System.Text;
+
     public static class Misc
     {
         public static string GetCurrentIPAddr()
@@ -41,30 +41,30 @@ namespace ChitChat.Private
 
         public static string GetMd5Hash(MD5 md5Hash, string input)
         {
-            //Convert the input string to a byte array and compute the has
+            // Convert the input string to a byte array and compute the has
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-            //Create a new Stringbuilder to collect bytes
-            //and create a string
+            // Create a new Stringbuilder to collect bytes
+            // and create a string
             StringBuilder sb = new StringBuilder();
 
-            //Loop trough each byte of the hashed data
+            // Loop trough each byte of the hashed data
             // and format each one as hexademical string
             for (int i = 0; i < data.Length; i++)
             {
                 sb.Append(data[i].ToString("x2"));
             }
 
-            //Return hexademical string
+            // Return hexademical string
             return sb.ToString();
         }
 
         public static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
         {
-            //Hash the input
+            // Hash the input
             string hashOfInput = GetMd5Hash(md5Hash, input);
 
-            //Create a StringComparer and compare the hashes
+            // Create a StringComparer and compare the hashes
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 
             if (0 == comparer.Compare(hashOfInput, hash))

@@ -1,49 +1,22 @@
-﻿using System;
-using System.Net;
-using System.Text;
-using System.IO;
-using System.Windows;
-using System.Security.Cryptography;
-using ChitChat.Private;
-
-namespace ChitChat
+﻿namespace ChitChat
 {
+    using System;
+    using System.IO;
+    using System.Net;
+    using System.Security.Cryptography;
+    using System.Text;
+    using System.Windows;
+    using ChitChat.Private;
+
     public class SendRequests
     {
-        private string SendData(string URI, string data)
-        {
-            try
-            {
-                HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(URI);
-                httpRequest.Method = "POST";
-                byte[] postBytes = Encoding.ASCII.GetBytes(data);
-                httpRequest.ContentType = "application/x-www-form-urlencoded";
-                httpRequest.ContentLength = postBytes.Length;
-                Stream requestStream = httpRequest.GetRequestStream();
-                requestStream.Write(postBytes, 0, postBytes.Length);
-                requestStream.Close();
-
-                HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-                Stream responseStream = httpResponse.GetResponseStream();
-
-                var sr = new StreamReader(httpResponse.GetResponseStream());
-                string responseText = sr.ReadToEnd();
-                return responseText;
-            }
-            catch (WebException)
-            {
-                MessageBox.Show("Please check your internet connection!");
-                return "false";
-            }
-        }
-
         public string TryToLogInUser(string username, string password)
         {
             StringBuilder data = new StringBuilder();
             string Username = username;
             string Password = password;
 
-            using(MD5 md5Hash = MD5.Create())
+            using (MD5 md5Hash = MD5.Create())
             {
                 string hash = Misc.GetMd5Hash(md5Hash, Password);
 
@@ -103,5 +76,31 @@ namespace ChitChat
             }
         }
 
+        private string SendData(string URI, string data)
+        {
+            try
+            {
+                HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(URI);
+                httpRequest.Method = "POST";
+                byte[] postBytes = Encoding.ASCII.GetBytes(data);
+                httpRequest.ContentType = "application/x-www-form-urlencoded";
+                httpRequest.ContentLength = postBytes.Length;
+                Stream requestStream = httpRequest.GetRequestStream();
+                requestStream.Write(postBytes, 0, postBytes.Length);
+                requestStream.Close();
+
+                HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                Stream responseStream = httpResponse.GetResponseStream();
+
+                var sr = new StreamReader(httpResponse.GetResponseStream());
+                string responseText = sr.ReadToEnd();
+                return responseText;
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("Please check your internet connection!");
+                return "false";
+            }
+        }
     }
 }
