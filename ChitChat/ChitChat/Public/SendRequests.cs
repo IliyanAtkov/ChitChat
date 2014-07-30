@@ -76,6 +76,63 @@
             }
         }
 
+        public bool UpdateUser(string data, ToUpdate whatToUpdate, int userID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("whatToUpdate=");
+
+            if (whatToUpdate == ToUpdate.IP)
+            {
+                sb.Append("ip");
+            }
+            else if (whatToUpdate == ToUpdate.City)
+            {
+                sb.Append("city");
+            }
+            else if (whatToUpdate == ToUpdate.Gender)
+            {
+                sb.Append("gender");
+            }
+            else if (whatToUpdate == ToUpdate.Info)
+            {
+                sb.Append("info");
+            }
+            else if (whatToUpdate == ToUpdate.Name)
+            {
+                sb.Append("name");
+            }
+            else if (whatToUpdate == ToUpdate.Nation)
+            {
+                sb.Append("nation");
+            }
+            else if (whatToUpdate == ToUpdate.OnlineStance)
+            {
+                sb.Append("onlineStance");
+            }
+            else if (whatToUpdate == ToUpdate.Phone)
+            {
+                sb.Append("phone");
+            }
+
+            sb.Append("&data=");
+            sb.Append(data);
+            sb.Append("&userID=");
+            sb.Append(userID);
+
+            string dataToSend = sb.ToString();
+
+            string result = this.SendData(Constants.CHECK_URI, dataToSend);
+
+            if (result == "true")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private string SendData(string URI, string data)
         {
             try

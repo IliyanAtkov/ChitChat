@@ -56,6 +56,7 @@
     <Compile Include="Private\Misc.cs" />
     <Compile Include="Private\Stances.cs" />
     <Compile Include="Private\Constants.cs" />
+    <Compile Include="Private\ToUpdate.cs" />
     <Compile Include="Public\User.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
@@ -114,6 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="assets\Tick.png" />
     <Content Include="ChitChat.sql" />
   </ItemGroup>
   <ItemGroup>

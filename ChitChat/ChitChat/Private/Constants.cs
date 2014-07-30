@@ -20,6 +20,8 @@
 
         public static string LOGIN_URI { get { return "http://188.254.209.106:8080/ChitChat/login.php"; } }
 
+        public static string CHECK_URI { get { return "http://188.254.209.106:8080/ChitChat/check.php"; } }
+
         public static string IPCHECK_URI { get { return "http://checkip.dyndns.org"; } }
     }
 }
