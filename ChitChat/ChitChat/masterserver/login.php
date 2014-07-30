@@ -3,16 +3,19 @@ include "config.php";
 /* 
 ChitChat MasterServer
 
-Functions to register a user:
+Functions to login the user:
 */
 
 if (isset($_POST['username'])) {
 	//Assing variables sent from the program
 	$username = 		$_POST['username'];
 	$password = 		$_POST['password'];
-	$email = 			$_POST['email'];
-	$ip = 				$_POST['ip'];
-	$sex = 				$_POST['sex'];
+
+	//Some protection from SQL injection
+	$username = stripslashes($username);
+	$username = mysql_real_escape_string($username);
+	$password = stripslashes($password);
+	$password = mysql_real_escape_string($password);
 
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 
@@ -20,18 +23,20 @@ if (isset($_POST['username'])) {
 		$select_db = mysql_select_db(DB_NAME, $conn);
 
 		if ($select_db) {
-			$sql  = "INSERT INTO users (`username`, `password`, `email`, `joinDate`, `ip`, `info`, `city`, `nation`, `phone`, `sex`, `name`, `isDonator`, `onlineStance`) 
-		 			 VALUES ('{$username}', '{$password}', '{$email}', now(), '{$ip}', NULL, NULL, NULL, NULL, '{$sex}', NULL, '0', 'Offline')";
+			$sql  = "SELECT id FROM users WHERE username = '{$username}' AND password = '{$password}'";
 		
 			$result = mysql_query($sql, $conn);
 			
-			if($result)
+			if($result) // If executed successfuly
 			{
-				echo "true";
-			}
-			else
-			{
-				echo "false";
+				if (mysql_num_rows($result) == 1) 
+				{	
+					echo "true";
+				}
+				else 
+				{
+					echo "false";
+				}
 			}
 		}
 		else {

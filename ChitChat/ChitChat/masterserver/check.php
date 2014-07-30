@@ -6,13 +6,11 @@ ChitChat MasterServer
 Functions to register a user:
 */
 
-if (isset($_POST['username'])) {
+if (isset($_POST['data'])) {
 	//Assing variables sent from the program
-	$username = 		$_POST['username'];
-	$password = 		$_POST['password'];
-	$email = 			$_POST['email'];
-	$ip = 				$_POST['ip'];
-	$sex = 				$_POST['sex'];
+	$whatToUpdate = 	$_POST['whatToUpdate'];
+	$data = 			$_POST['data'];
+	$id = 				$_POST['userID'];
 
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 
@@ -20,8 +18,8 @@ if (isset($_POST['username'])) {
 		$select_db = mysql_select_db(DB_NAME, $conn);
 
 		if ($select_db) {
-			$sql  = "INSERT INTO users (`username`, `password`, `email`, `joinDate`, `ip`, `info`, `city`, `nation`, `phone`, `sex`, `name`, `isDonator`, `onlineStance`) 
-		 			 VALUES ('{$username}', '{$password}', '{$email}', now(), '{$ip}', NULL, NULL, NULL, NULL, '{$sex}', NULL, '0', 'Offline')";
+
+			$sql  = "UPDATE users SET `{$whatToUpdate}`='$data' WHERE id = {$id}";
 		
 			$result = mysql_query($sql, $conn);
 			
@@ -32,6 +30,7 @@ if (isset($_POST['username'])) {
 			else
 			{
 				echo "false";
+				mysql_error();
 			}
 		}
 		else {
