@@ -26,6 +26,7 @@
         private const string PasswordIsValid = null;
         private int errorsOnScreen = 0;
         private bool isSexChosen = false;
+        private string sex = "";
 
         private Registration registation = new Registration();
 
@@ -40,7 +41,7 @@
             RadioButton value = sender as RadioButton;
             if (value != null)
             {
-                string sex = value.Content.ToString();
+                this.sex = value.Content.ToString();
                 this.isSexChosen = true;
             }
 
@@ -64,7 +65,24 @@
             {
                 MessageBox.Show("There are errors you must fix it");
                 e.Handled = true;
-            }        
+            }
+        
+            //Register implementation
+            SendRequests sr = new SendRequests();
+            string ipAddr = Misc.GetCurrentIPAddr();
+            bool regSuccess = sr.RegisterUser(UserName.Text, PasswordBox.Password, Email.Text, ipAddr, this.sex);
+
+            if (regSuccess) //If successfuly registered
+            {
+                Login lw = new Login();
+                MessageBox.Show("Successfuly registered!");
+                lw.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Failed to register!");
+            }
         }
 
         private void Validation_Error(object sender, ValidationErrorEventArgs e)
