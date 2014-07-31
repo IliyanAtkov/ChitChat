@@ -95,9 +95,8 @@
             {
                 //Set the new ip to the variable
                 this.ip = Misc.GetCurrentIPAddr();
-                //Update the database with new ip
-                string updateInfo = "ip";
-                sr.UpdateUser(this.ip, updateInfo, this.id);
+                //Update the database with new ips
+                sr.UpdateUser(this.ip, ToUpdate.IP, this.id);
             }
         }
 
@@ -110,8 +109,7 @@
                 //Set local variable
                 this.info = value; 
                 //Update the database
-                string updateInfo = "info";
-                sr.UpdateUser(this.info, updateInfo, this.id);
+                sr.UpdateUser(this.info, ToUpdate.Info, this.id);
             }
         }
 
@@ -124,8 +122,7 @@
                 //Update local variable
                 this.city = value; 
                 //Update database
-                string updateInfo = "city";
-                sr.UpdateUser(this.city, updateInfo, this.id);
+                sr.UpdateUser(this.city, ToUpdate.City, this.id);
             }
         }
 
@@ -138,8 +135,7 @@
                 //Update local variable
                 this.nation = value;
                 //Update database
-                string updateInfo = "nation";
-                sr.UpdateUser(this.nation, updateInfo, this.id);
+                sr.UpdateUser(this.nation, ToUpdate.Nation, this.id);
             }
         }
 
@@ -150,8 +146,7 @@
             set 
             { 
                 this.phone = value;
-                string updateInfo = "phone";
-                sr.UpdateUser(this.phone, updateInfo, this.id);
+                sr.UpdateUser(this.phone, ToUpdate.Phone, this.id);
             }
         }
 
@@ -162,8 +157,7 @@
             set 
             { 
                 this.sex = value;
-                string updateInfo = "gender";
-                sr.UpdateUser(this.sex, updateInfo, this.id);
+                sr.UpdateUser(this.sex, ToUpdate.Gender, this.id);
             }
         }
 
@@ -174,8 +168,7 @@
             set 
             { 
                 this.name = value;
-                string updateInfo = "name";
-                sr.UpdateUser(this.name, updateInfo, this.id);
+                sr.UpdateUser(this.name, ToUpdate.Name, this.id);
             }
         }
 
@@ -193,8 +186,7 @@
             set 
             { 
                 this.onlineStance = value;
-                string updateInfo = "onlineStance";
-                sr.UpdateUser(this.onlineStance, updateInfo, this.id);
+                sr.UpdateUser(this.onlineStance, ToUpdate.OnlineStance, this.id);
             }
         }
 
