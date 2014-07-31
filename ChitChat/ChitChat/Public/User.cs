@@ -59,14 +59,14 @@
         public int Id
         {
             get { return this.id; }
-            set { this.id = value; }
+           private set { this.id = value; }
         }
 
         /** Not supposed to be changed, so only locally */
         public string Username
         {
             get { return this.username; }
-            set { this.username = value; }
+            private set { this.username = value; }
         }
 
         /** Should be updated from website only */
@@ -80,7 +80,7 @@
         public string JoinDate
         {
             get { return this.joinDate; }
-            set { this.joinDate = value; }
+            private set { this.joinDate = value; }
         }
 
         /** Should be updated everytime, when we start the app, to check if the user has logged from different pc */

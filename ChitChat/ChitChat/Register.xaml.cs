@@ -66,22 +66,27 @@
                 MessageBox.Show("There are errors you must fix it");
                 e.Handled = true;
             }
-        
-            //Register implementation
-            SendRequests sr = new SendRequests();
-            string ipAddr = Misc.GetCurrentIPAddr();
-            bool regSuccess = sr.RegisterUser(UserName.Text, PasswordBox.Password, Email.Text, ipAddr, this.sex);
 
-            if (regSuccess) //If successfuly registered
-            {
-                Login lw = new Login();
-                MessageBox.Show("Successfuly registered!");
-                lw.Show();
-                this.Hide();
-            }
             else
             {
-                MessageBox.Show("Failed to register!");
+                //Register implementation
+                SendRequests sr = new SendRequests();
+                string ipAddr = Misc.GetCurrentIPAddr();
+                bool regSuccess = sr.RegisterUser(UserName.Text, PasswordBox.Password, Email.Text, ipAddr, this.sex);
+
+                if (regSuccess) //If successfuly registered
+                {
+                    Login lw = new Login();
+                    MessageBox.Show("Successfuly registered!");
+                    lw.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to register!");
+                }
+
+                e.Handled = true;
             }
         }
 
