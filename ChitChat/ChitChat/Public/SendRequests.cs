@@ -76,11 +76,12 @@
             }
         }
 
-        public bool UpdateUser(string data, ToUpdate whatToUpdate, int userID)
+        public bool UpdateUser(string data, String whatToUpdate, int userID)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("whatToUpdate=");
-
+            sb.Append(whatToUpdate);
+/*  Old code
             if (whatToUpdate == ToUpdate.IP)
             {
                 sb.Append("ip");
@@ -113,7 +114,7 @@
             {
                 sb.Append("phone");
             }
-
+*/
             sb.Append("&data=");
             sb.Append(data);
             sb.Append("&userID=");
