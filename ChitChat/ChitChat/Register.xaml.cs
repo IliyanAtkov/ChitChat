@@ -79,7 +79,7 @@
                     Login lw = new Login();
                     MessageBox.Show("Successfuly registered!");
                     lw.Show();
-                    this.Hide();
+                    this.Close();
                 }
                 else
                 {

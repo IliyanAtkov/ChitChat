@@ -58,6 +58,10 @@
                 mw.Show();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Wrong Username or Password");
+            }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
