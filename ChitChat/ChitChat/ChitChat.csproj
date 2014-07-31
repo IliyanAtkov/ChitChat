@@ -115,6 +115,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="assets\Accept.png" />
+    <Resource Include="assets\Deny.png" />
     <Content Include="ChitChat.sql" />
   </ItemGroup>
   <ItemGroup>
