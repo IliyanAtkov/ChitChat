@@ -8,6 +8,12 @@ Functions to register a user:
 
 if (isset($_POST['username'])) 
 {
+	//Assing variables sent from the program
+	$username =	mysql_prep($_POST['firstname']);
+	$password = mysql_prep($_POST['password']);
+	$email 	  = mysql_prep($_POST['email']);
+	$ip		  = mysql_prep($_POST['ip']);
+	$sex 	  = mysql_prep($_POST['sex']);
 
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 
@@ -17,25 +23,16 @@ if (isset($_POST['username']))
 
 		if ($select_db) 
 		{
-			//Assing variables sent from the program
-			$username =	mysqli_real_escape_string($conn, $_POST['firstname']);
-			$password = mysqli_real_escape_string($conn, $_POST['password']);
-			$email 	  = mysqli_real_escape_string($conn, $_POST['email']);
-			$ip		  = mysqli_real_escape_string($conn, $_POST['ip']);
-			$sex 	  = mysqli_real_escape_string($conn, $_POST['sex']);
-		
-				$sql  = "SELECT * FROM users WHERE email = '{$email}'"
+				$sql  = "SELECT id FROM users WHERE email = '{$email}'"
 				$result = mysql_query($sql, $conn);
-				$row = mysql_fetch_assoc($result);
-				if(mysql_num_rows($result)) 
+				if(mysql_num_rows($result) >= 1) 
 				{
 					die("Email already registered");
 				}
 				
-				$sql  = "SELECT * FROM users WHERE username = '{$username}'"
+				$sql  = "SELECT id FROM users WHERE username = '{$username}'"
 				$result = mysql_query($sql, $conn);
-				$row = mysql_fetch_assoc($result);
-				if(mysql_num_rows($result)) 
+				if(mysql_num_rows($result) >= 1) 
 				{
 					die("Username already exists");
 				}

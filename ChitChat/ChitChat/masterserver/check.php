@@ -8,9 +8,9 @@ Functions to register a user:
 
 if (isset($_POST['data'])) {
 	//Assing variables sent from the program
-	$whatToUpdate = 	$_POST['whatToUpdate'];
-	$data = 			$_POST['data'];
-	$id = 				$_POST['userID'];
+	$whatToUpdate = 	mysql_prep($_POST['whatToUpdate']);
+	$data = 			mysql_prep($_POST['data']);
+	$id = 				mysql_prep($_POST['userID']);
 
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 

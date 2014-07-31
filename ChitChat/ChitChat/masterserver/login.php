@@ -8,14 +8,8 @@ Functions to login the user:
 
 if (isset($_POST['username'])) {
 	//Assing variables sent from the program
-	$username = 		$_POST['username'];
-	$password = 		$_POST['password'];
-
-	//Some protection from SQL injection
-	$username = stripslashes($username);
-	$username = mysql_real_escape_string($username);
-	$password = stripslashes($password);
-	$password = mysql_real_escape_string($password);
+	$username = 		mysql_prep($_POST['username']);
+	$password = 		mysql_prep($_POST['password']);
 
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 
@@ -29,7 +23,7 @@ if (isset($_POST['username'])) {
 			
 			if($result) // If executed successfuly
 			{
-				if (mysql_num_rows($result) == 1) 
+				if (mysql_num_rows($result) >= 1) 
 				{	
 					echo "true";
 				}
