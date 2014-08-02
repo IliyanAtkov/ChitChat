@@ -6,15 +6,14 @@ ChitChat MasterServer
 Functions to register a user:
 */
 
-if (isset($_GET['username'])) 
+if (isset($_POST['username'])) 
 {
 	//Assing variables sent from the program
-	$username =	$_GET['username'];
-	$password = $_GET['password'];
-	$password = md5($password);
-	$email 	  = $_GET['email'];
-	$ip		  = $_GET['ip'];
-	$sex 	  = $_GET['sex'];
+	$username =	mysql_prep($_POST['username']);
+	$password = mysql_prep($_POST['password']);
+	$email 	  = mysql_prep($_POST['email']);
+	$ip		  = mysql_prep($_POST['ip']);
+	$sex 	  = mysql_prep($_POST['sex']);
 	
 	$bEmail;
 
@@ -33,7 +32,7 @@ if (isset($_GET['username']))
 				$result = mysql_query($checkUsernameSQL);
 				if(mysql_num_rows($result) >= 1)
 				{
-					echo "Username exists";
+					die("Username exists");
 					$bUsername = false;
 				}
 				else
@@ -45,7 +44,7 @@ if (isset($_GET['username']))
 				$result = mysql_query($checkEmailSQL);
 				if(mysql_num_rows($result) >= 1)
 				{
-					echo "Email exists";
+					die("Email exists");
 					$bEmail = false;
 				}
 				else
@@ -62,16 +61,16 @@ if (isset($_GET['username']))
 				
 					if($result)
 					{
-						echo "true";
+						die("true");
 					}
 					else
 					{
-						echo "false";
+						die("false");
 					}
 				}
 				else
 				{
-					echo "false";
+					die("false");
 				}
 		}
 		else
