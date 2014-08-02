@@ -24,6 +24,10 @@
     {
         /** Used to check if the user has logged in. By default it's false. */
         private bool loggedIn;
+
+        /** Used to access user variables */
+        public User User;
+
         // Used to change Stances, by default - Online
         private Stances currentUserStance = Stances.Online;
 
@@ -32,9 +36,12 @@
             this.InitializeComponent();
         }
 
-        public MainWindow(bool loggedIn) : this()
+        public MainWindow(bool loggedIn, User user) : this()
         {
             this.LoggedIn = loggedIn;
+            this.User = user;
+
+            UsernameOutput.Content = this.User.Username;
         }
 
         public bool LoggedIn

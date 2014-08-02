@@ -35,7 +35,7 @@
                 </TransformGroup>
             </Border.RenderTransform>
         </Border>
-        <Label Content="       Name here" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,31,0,0" Height="31" Width="121" Foreground="Black"/>
+        <Label Name="UsernameOutput" Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,31,0,0" Height="31" Width="121" Foreground="Black"/>
         <Border BorderBrush="#FFE6E6E6" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="160" Margin="10,31,0,0" Background="Transparent"/>
         <Button x:Name="change_status_button" Content="Add new friends..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="10,67,0,0" Height="32" BorderThickness="0" Background="Transparent" />
     </Grid>

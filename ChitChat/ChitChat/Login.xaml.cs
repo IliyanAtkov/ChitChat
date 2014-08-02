@@ -14,6 +14,7 @@
     using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
     using ChitChat.Private;
+    using ChitChat.Public;
 
     /// <summary>
     /// Interaction logic for Login.xaml
@@ -54,7 +55,8 @@
             if (canLogin == "true")
             {
                 this.LogInUser();
-                MainWindow mw = new MainWindow(this.LoggedIn);
+                User user = new User(1, "OzoneBG", "", "", "", "", "", "", "", "", "", 0, "");
+                MainWindow mw = new MainWindow(this.LoggedIn, user);
                 mw.Show();
                 this.Close();
             }
