@@ -8,23 +8,14 @@ Functions to register a user:
 
 if (isset($_POST['username'])) 
 {
-	//Assing variables sent from the program
-	/*$username =	mysql_prep($_POST['username']);
-	$password = mysql_prep($_POST['password']);
-	$email 	  = mysql_prep($_POST['email']);
-	$ip		  = mysql_prep($_POST['ip']);
-	$sex 	  = mysql_prep($_POST['sex']);*/
+	//Variables sent from the program
+	$username =	mysql_real_escape_string($_POST['username']);
+	$password = mysql_real_escape_string($_POST['password']);
+	$email 	  = mysql_real_escape_string($_POST['email']);
+	$ip		  = mysql_real_escape_string($_POST['ip']);
+	$sex 	  = mysql_real_escape_string($_POST['sex']);
 	
-	$username =	$_POST['username'];
-	$password = $_POST['password'];
-	$email 	  = $_POST['email'];
-	$ip		  = $_POST['ip'];
-	$sex 	  = $_POST['sex'];
-	
-	$bEmail;
-	$bUsername;
-
-	//Attempt mysql connection
+	//Attempt MySql connection
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 
 	if ($conn) //If succeeded
@@ -40,11 +31,6 @@ if (isset($_POST['username']))
 				if(mysql_num_rows($result) >= 1)
 				{
 					die("Username");
-					$bUsername = false;
-				}
-				else
-				{
-					$bUsername = true;
 				}
 				
 				$checkEmailSQL = "SELECT id FROM users WHERE email = '{$email}'";
@@ -52,11 +38,6 @@ if (isset($_POST['username']))
 				if(mysql_num_rows($result) >= 1)
 				{
 					die("Email");
-					$bEmail = false;
-				}
-				else
-				{
-					$bEmail = true;
 				}
 				
 				$sql  = "INSERT INTO users (`username`, `password`, `email`, `joinDate`, `ip`, `info`, `city`, `nation`, `phone`, `sex`, `name`, `isDonator`, `onlineStance`) 
