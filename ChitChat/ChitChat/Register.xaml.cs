@@ -72,16 +72,24 @@
                 //Register implementation
                 SendRequests sr = new SendRequests();
                 string ipAddr = Misc.GetCurrentIPAddr();
-                bool regSuccess = sr.RegisterUser(UserName.Text, PasswordBox.Password, Email.Text, ipAddr, this.sex);
+                int regSuccess = sr.RegisterUser(UserName.Text, PasswordBox.Password, Email.Text, ipAddr, this.sex);
 
-                if (regSuccess) //If successfuly registered
+                if (regSuccess == 0) //If successfuly registered
                 {
                     Login lw = new Login();
                     MessageBox.Show("Successfuly registered!");
                     lw.Show();
                     this.Close();
                 }
-                else
+                else if(regSuccess == 1)
+                {
+                    MessageBox.Show("Username already in use!");
+                }
+                else if(regSuccess == 2)
+                {
+                    MessageBox.Show("Email already in use!");
+                }
+                else if(regSuccess == 3)
                 {
                     MessageBox.Show("Failed to register!");
                 }

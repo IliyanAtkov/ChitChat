@@ -37,7 +37,7 @@
             return result;
         }
 
-        public bool RegisterUser(string username, string password, string email, string ip, string sex)
+        public int RegisterUser(string username, string password, string email, string ip, string sex)
         {
             StringBuilder data = new StringBuilder();
             string Password = password;
@@ -67,11 +67,19 @@
 
                 if (result == "true")
                 {
-                    return true;
+                    return 0;
+                }
+                else if(result == "Username")
+                {
+                    return 1;
+                }
+                else if(result == "Email")
+                {
+                    return 2;
                 }
                 else
                 {
-                    return false;
+                    return 3;
                 }
             }
         }

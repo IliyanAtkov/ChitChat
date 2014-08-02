@@ -9,13 +9,20 @@ Functions to register a user:
 if (isset($_POST['username'])) 
 {
 	//Assing variables sent from the program
-	$username =	mysql_prep($_POST['username']);
+	/*$username =	mysql_prep($_POST['username']);
 	$password = mysql_prep($_POST['password']);
 	$email 	  = mysql_prep($_POST['email']);
 	$ip		  = mysql_prep($_POST['ip']);
-	$sex 	  = mysql_prep($_POST['sex']);
+	$sex 	  = mysql_prep($_POST['sex']);*/
+	
+	$username =	$_POST['username'];
+	$password = $_POST['password'];
+	$email 	  = $_POST['email'];
+	$ip		  = $_POST['ip'];
+	$sex 	  = $_POST['sex'];
 	
 	$bEmail;
+	$bUsername;
 
 	//Attempt mysql connection
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
@@ -32,7 +39,7 @@ if (isset($_POST['username']))
 				$result = mysql_query($checkUsernameSQL);
 				if(mysql_num_rows($result) >= 1)
 				{
-					die("Username exists");
+					die("Username");
 					$bUsername = false;
 				}
 				else
@@ -44,7 +51,7 @@ if (isset($_POST['username']))
 				$result = mysql_query($checkEmailSQL);
 				if(mysql_num_rows($result) >= 1)
 				{
-					die("Email exists");
+					die("Email");
 					$bEmail = false;
 				}
 				else
@@ -52,21 +59,14 @@ if (isset($_POST['username']))
 					$bEmail = true;
 				}
 				
-				if($bEmail && $bUsername)
-				{
-					$sql  = "INSERT INTO users (`username`, `password`, `email`, `joinDate`, `ip`, `info`, `city`, `nation`, `phone`, `sex`, `name`, `isDonator`, `onlineStance`) 
-							VALUES ('{$username}', '{$password}', '{$email}', now(), '{$ip}', NULL, NULL, NULL, NULL, '{$sex}', NULL, '0', 'Offline')";
+				$sql  = "INSERT INTO users (`username`, `password`, `email`, `joinDate`, `ip`, `info`, `city`, `nation`, `phone`, `sex`, `name`, `isDonator`, `onlineStance`) 
+						VALUES ('{$username}', '{$password}', '{$email}', now(), '{$ip}', NULL, NULL, NULL, NULL, '{$sex}', NULL, '0', 'Offline')";
 			
-					$result = mysql_query($sql, $conn);
+				$result = mysql_query($sql, $conn);
 				
-					if($result)
-					{
-						die("true");
-					}
-					else
-					{
-						die("false");
-					}
+				if($result)
+				{
+					die("true");
 				}
 				else
 				{
