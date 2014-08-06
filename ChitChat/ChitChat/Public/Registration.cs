@@ -15,6 +15,21 @@
 
         public string Email { get;  set; }
 
+        public string country { get; set; }
+
+        public string nation { get; set; }
+
+        public string language { get; set; }
+
+        public string city { get; set; }
+
+        public string phone { get; set; }
+
+        public string name { get; set; }
+
+        public string info { get; set; }
+
+
         public string Error
         {
             get { return null; }
@@ -32,6 +47,27 @@
                         break;
                     case "Email":
                         validation = this.EmailValidation();
+                        break;
+                    case "country":
+                        validation = this.CountryValidation();
+                        break;
+                    case "nation":
+                        validation =this.NationValidation();
+                        break;
+                    case "language":
+                        validation = this.LanguageValidation();
+                        break;
+                    case "city":
+                        validation = this.CityValidation();
+                        break;
+                    case "phone":
+                        validation = this.PhoneValidation();
+                        break;
+                    case "name":
+                        validation = this.NameValidation();
+                        break;
+                    case "info":
+                        validation = null;
                         break;
                     default:
                         break;
@@ -81,5 +117,113 @@
                 return "Invalid email adress";
             }
         }
+
+        private string CountryValidation()
+        {
+            if (string.IsNullOrEmpty(this.country))
+            {
+                return null;
+            }
+
+            bool isValid = Regex.IsMatch(this.country, @"^[a-zA-Z0-9 ]+$");
+            if (isValid)
+            {
+                return null;
+            }
+            else
+            {
+                return "Invalid country";
+            }
+        }
+       
+        private string  NationValidation()
+        {
+            if (string.IsNullOrEmpty(this.nation))
+            {
+                return null;
+            }
+
+            bool isValid = Regex.IsMatch(this.nation, @"^[a-zA-Z0-9]+$");
+            if (isValid)
+            {
+                return null;
+            }
+            else
+            {
+                return "Invalid nation";
+            }
+        }
+
+        private string LanguageValidation()
+        {
+            if (string.IsNullOrEmpty(this.language))
+            {
+                return null;
+            }
+
+            bool isValid = Regex.IsMatch(this.language, @"^[a-zA-Z0-9]+$");
+            if (isValid)
+            {
+                return null;
+            }
+            else
+            {
+                return "Invalid language";
+            }
+        }
+
+        private string CityValidation()
+        {
+            if (string.IsNullOrEmpty(this.city))
+            {
+                return null;
+            }
+
+            bool isValid = Regex.IsMatch(this.city, @"^[a-zA-Z0-9 ]+$");
+            if (isValid)
+            {
+                return null;
+            }
+            else
+            {
+                return "Invalid city";
+            }
+        }
+
+         private string PhoneValidation()
+        {
+            if (string.IsNullOrEmpty(this.phone))
+            {
+                return null;
+            }
+
+            bool isValid = Regex.IsMatch(this.phone, @"^[0-9+]+$");
+            if (isValid)
+            {
+                return null;
+            }
+            else
+            {
+                return "Invalid phone";
+            }
+        }
+
+         private string NameValidation()
+         {
+             if (string.IsNullOrEmpty(this.name))
+             {
+                 return null;
+             }
+
+             bool isValid = Regex.IsMatch(this.name, @"^[a-zA-Z0-9 ]+$");
+             if (isValid)
+             {
+                 return null;
+             }
+             else
+             {
+                 return "Invalid name";
+             }
+         }
     }
 }
