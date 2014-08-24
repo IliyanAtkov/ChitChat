@@ -5,6 +5,8 @@
 
     public class User
     {
+        SendRequests sr = new SendRequests();
+
         //Variables
         private int id;
 
@@ -94,7 +96,7 @@
                 //Set the new ip to the variable
                 this.ip = Misc.GetCurrentIPAddr();
                 //Update the database with new ips
-                SendRequests.UpdateUser(this.ip, ToUpdate.IP, this.id);
+                sr.UpdateUser(this.ip, ToUpdate.IP, this.id);
             }
         }
 
@@ -107,7 +109,7 @@
                 //Set local variable
                 this.info = value; 
                 //Update the database
-                SendRequests.UpdateUser(this.info, ToUpdate.Info, this.id);
+                sr.UpdateUser(this.info, ToUpdate.Info, this.id);
             }
         }
 
@@ -120,7 +122,7 @@
                 //Update local variable
                 this.city = value; 
                 //Update database
-                SendRequests.UpdateUser(this.city, ToUpdate.City, this.id);
+                sr.UpdateUser(this.city, ToUpdate.City, this.id);
             }
         }
 
@@ -133,7 +135,7 @@
                 //Update local variable
                 this.nation = value;
                 //Update database
-                SendRequests.UpdateUser(this.nation, ToUpdate.Nation, this.id);
+                sr.UpdateUser(this.nation, ToUpdate.Nation, this.id);
             }
         }
 
@@ -144,7 +146,7 @@
             set 
             { 
                 this.phone = value;
-                SendRequests.UpdateUser(this.phone, ToUpdate.Phone, this.id);
+                sr.UpdateUser(this.phone, ToUpdate.Phone, this.id);
             }
         }
 
@@ -155,7 +157,7 @@
             set 
             { 
                 this.sex = value;
-                SendRequests.UpdateUser(this.sex, ToUpdate.Gender, this.id);
+                sr.UpdateUser(this.sex, ToUpdate.Gender, this.id);
             }
         }
 
@@ -166,7 +168,7 @@
             set 
             { 
                 this.name = value;
-                SendRequests.UpdateUser(this.name, ToUpdate.Name, this.id);
+                sr.UpdateUser(this.name, ToUpdate.Name, this.id);
             }
         }
 
@@ -184,7 +186,7 @@
             set 
             { 
                 this.onlineStance = value;
-                SendRequests.UpdateUser(this.onlineStance, ToUpdate.OnlineStance, this.id);
+                sr.UpdateUser(this.onlineStance, ToUpdate.OnlineStance, this.id);
             }
         }
 
