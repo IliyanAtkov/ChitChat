@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChitChat", "ChitChat\ChitChat.csproj", "{76D0AD63-7795-4DED-8457-D2A1C73D9950}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteToFile", "WriteToFile\WriteToFile.csproj", "{7594A4A5-66E4-4779-A0FC-E1D57147CB12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{76D0AD63-7795-4DED-8457-D2A1C73D9950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76D0AD63-7795-4DED-8457-D2A1C73D9950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76D0AD63-7795-4DED-8457-D2A1C73D9950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7594A4A5-66E4-4779-A0FC-E1D57147CB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7594A4A5-66E4-4779-A0FC-E1D57147CB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7594A4A5-66E4-4779-A0FC-E1D57147CB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7594A4A5-66E4-4779-A0FC-E1D57147CB12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
