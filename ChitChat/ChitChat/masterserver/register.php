@@ -9,13 +9,20 @@ Functions to register a user:
 if (isset($_POST['username'])) 
 {
 	//Variables sent from the program
-	$username =	mysql_real_escape_string($_POST['username']);
+	$username = mysql_real_escape_string($_POST['username']);
 	$password = mysql_real_escape_string($_POST['password']);
 	$email 	  = mysql_real_escape_string($_POST['email']);
-	$ip		  = mysql_real_escape_string($_POST['ip']);
+	$ip	  = mysql_real_escape_string($_POST['ip']);
 	$sex 	  = mysql_real_escape_string($_POST['sex']);
+	$country  = mysql_real_escape_string($_POST['country']);
+	$nation   = mysql_real_escape_string($_POST['nation']);	
+	$language = mysql_real_escape_string($_POST['language']);
+	$name 	  = mysql_real_escape_string($_POST['name']);
+	$phone    = mysql_real_escape_string($_POST['phone']);
+	$city     = mysql_real_escape_string($_POST['city']);
+	$info     = mysql_real_escape_string($_POST['info']);
 	
-	//Attempt MySql connection
+//Attempt MySql connection
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 
 	if ($conn) //If succeeded
@@ -39,9 +46,10 @@ if (isset($_POST['username']))
 				{
 					die("Email");
 				}
-				
-				$sql  = "INSERT INTO users (`username`, `password`, `email`, `joinDate`, `ip`, `info`, `city`, `nation`, `phone`, `sex`, `name`, `isDonator`, `onlineStance`) 
-						VALUES ('{$username}', '{$password}', '{$email}', now(), '{$ip}', NULL, NULL, NULL, NULL, '{$sex}', NULL, '0', 'Offline')";
+							
+
+				$sql  = "INSERT INTO users (`username`, `password`, `email`, `joinDate`, `ip`, `info`, `country`, `nation`, `language`, `phone`, `sex`, `name`, `city`, `isDonator`, `onlineStance`) 
+						VALUES ('{$username}', '{$password}', '{$email}', now(), '{$ip}', '{$info}', '{$country}', '{$nation}', '{$language}', '{$phone}', '{$sex}', '{$name}','{$city}', '0', 'Offline')";
 			
 				$result = mysql_query($sql, $conn);
 				

@@ -70,14 +70,14 @@
             else
             {
                 //Register implementation
-                SendRequests sr = new SendRequests();
                 string ipAddr = Misc.GetCurrentIPAddr();
-                int regSuccess = sr.RegisterUser(UserName.Text, PasswordBox.Password, Email.Text, ipAddr, this.sex);
-
-                if (regSuccess == 0) //If successfuly registered
+                //string regSuccess = SendRequests.RegisterUser(UserName.Text, PasswordBox.Password, Email.Text, ipAddr, this.sex, country.Text, nation.Text, language.Text);
+                int regSuccess = SendRequests.RegisterUser(this.registation, PasswordBox.Password, ipAddr, this.sex);
+                if (regSuccess == 0) 
+                //If successfuly registered
                 {
                     Login lw = new Login();
-                    MessageBox.Show("Successfuly registered!");
+                    MessageBox.Show("Registration successful!");
                     lw.Show();
                     this.Close();
                 }

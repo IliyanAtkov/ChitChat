@@ -8,9 +8,9 @@
     using System.Windows;
     using ChitChat.Private;
 
-    public class SendRequests
+    public static class SendRequests
     {
-        public string TryToLogInUser(string username, string password)
+        public static string TryToLogInUser(string username, string password)
         {
             StringBuilder data = new StringBuilder();
             string Username = username;
@@ -32,12 +32,13 @@
 
             string dataToSend = data.ToString();
 
-            string result = this.SendData(Constants.LOGIN_URI, dataToSend);
+            string result = SendData(Constants.LOGIN_URI, dataToSend);
 
             return result;
         }
 
-        public int RegisterUser(string username, string password, string email, string ip, string sex)
+      // public static string RegisterUser(string username, string password, string email, string ip, string sex, string country, string nation, string language)
+        public static int RegisterUser( Registration registration, string password, string ip, string sex)   
         {
             StringBuilder data = new StringBuilder();
             string Password = password;
@@ -50,20 +51,34 @@
                 if (Misc.VerifyMd5Hash(md5Hash, Password, hash))
                 {
                     data.Append("username=");
-                    data.Append(username);
+                    data.Append(registration.UserName);
                     data.Append("&password=");
                     data.Append(hash);
                     data.Append("&email=");
-                    data.Append(email);
+                    data.Append(registration.Email);
                     data.Append("&ip=");
                     data.Append(ip);
                     data.Append("&sex=");
                     data.Append(sex);
+                    data.Append("&country=");
+                    data.Append(registration.country);
+                    data.Append("&nation=");
+                    data.Append(registration.nation);
+                    data.Append("&language=");
+                    data.Append(registration.language);
+                    data.Append("&name=");
+                    data.Append(registration.name);
+                    data.Append("&phone=");
+                    data.Append(registration.phone);
+                    data.Append("&city=");
+                    data.Append(registration.city);
+                    data.Append("&info=");
+                    data.Append(registration.info);
                 }
 
                 string dataToSend = data.ToString();
 
-                string result = this.SendData(Constants.REGISTER_URI, dataToSend);
+                string result = SendData(Constants.REGISTER_URI, dataToSend);
 
                 if (result == "true")
                 {
@@ -84,7 +99,7 @@
             }
         }
 
-        public bool UpdateUser(string data, ToUpdate whatToUpdate, int userID)
+        public static bool UpdateUser(string data, ToUpdate whatToUpdate, int userID)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("whatToUpdate=");
@@ -96,7 +111,7 @@
 
             string dataToSend = sb.ToString();
 
-            string result = this.SendData(Constants.CHECK_URI, dataToSend);
+            string result = SendData(Constants.CHECK_URI, dataToSend);
 
             if (result == "true")
             {
@@ -108,7 +123,7 @@
             }
         }
 
-        private string SendData(string URI, string data)
+        private static string SendData(string URI, string data)
         {
             try
             {
