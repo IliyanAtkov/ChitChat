@@ -53,16 +53,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddFriendsTest.xaml.cs">
+      <DependentUpon>AddFriendsTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Private\Misc.cs" />
     <Compile Include="Private\Stances.cs" />
     <Compile Include="Private\Constants.cs" />
     <Compile Include="Private\ToUpdate.cs" />
+    <Compile Include="Public\Friend.cs" />
     <Compile Include="Public\User.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="Public\Registration.cs" />
     <Compile Include="Public\SendRequests.cs" />
+    <Page Include="AddFriendsTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,7 +128,6 @@
     <Content Include="ChitChat.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\" />
     <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

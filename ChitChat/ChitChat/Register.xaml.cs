@@ -156,5 +156,10 @@
                 return PasswordIsValid;
             }
         }
+
+        private void description_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
     }
 }

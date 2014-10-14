@@ -15,19 +15,19 @@
 
         public string Email { get;  set; }
 
-        public string country { get; set; }
+        public string Country { get; set; }
 
-        public string nation { get; set; }
+        public string Nation { get; set; }
 
-        public string language { get; set; }
+        public string Language { get; set; }
 
-        public string city { get; set; }
+        public string City { get; set; }
 
-        public string phone { get; set; }
+        public string Phone { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string info { get; set; }
+        public string Info { get; set; }
 
 
         public string Error
@@ -48,25 +48,25 @@
                     case "Email":
                         validation = this.EmailValidation();
                         break;
-                    case "country":
+                    case "Country":
                         validation = this.CountryValidation();
                         break;
-                    case "nation":
+                    case "Nation":
                         validation =this.NationValidation();
                         break;
-                    case "language":
+                    case "Language":
                         validation = this.LanguageValidation();
                         break;
-                    case "city":
+                    case "City":
                         validation = this.CityValidation();
                         break;
-                    case "phone":
+                    case "Phone":
                         validation = this.PhoneValidation();
                         break;
-                    case "name":
+                    case "Name":
                         validation = this.NameValidation();
                         break;
-                    case "info":
+                    case "Info":
                         validation = null;
                         break;
                     default:
@@ -120,12 +120,12 @@
 
         private string CountryValidation()
         {
-            if (string.IsNullOrEmpty(this.country))
+            if (string.IsNullOrEmpty(this.Country))
             {
                 return null;
             }
 
-            bool isValid = Regex.IsMatch(this.country, @"^[a-zA-Z0-9 ]+$");
+            bool isValid = Regex.IsMatch(this.Country, @"^[a-zA-Z0-9 ]+$");
             if (isValid)
             {
                 return null;
@@ -138,12 +138,12 @@
        
         private string  NationValidation()
         {
-            if (string.IsNullOrEmpty(this.nation))
+            if (string.IsNullOrEmpty(this.Nation))
             {
                 return null;
             }
 
-            bool isValid = Regex.IsMatch(this.nation, @"^[a-zA-Z0-9]+$");
+            bool isValid = Regex.IsMatch(this.Nation, @"^[a-zA-Z0-9]+$");
             if (isValid)
             {
                 return null;
@@ -156,12 +156,12 @@
 
         private string LanguageValidation()
         {
-            if (string.IsNullOrEmpty(this.language))
+            if (string.IsNullOrEmpty(this.Language))
             {
                 return null;
             }
 
-            bool isValid = Regex.IsMatch(this.language, @"^[a-zA-Z0-9]+$");
+            bool isValid = Regex.IsMatch(this.Language, @"^[a-zA-Z0-9]+$");
             if (isValid)
             {
                 return null;
@@ -174,12 +174,12 @@
 
         private string CityValidation()
         {
-            if (string.IsNullOrEmpty(this.city))
+            if (string.IsNullOrEmpty(this.City))
             {
                 return null;
             }
 
-            bool isValid = Regex.IsMatch(this.city, @"^[a-zA-Z0-9 ]+$");
+            bool isValid = Regex.IsMatch(this.City, @"^[a-zA-Z0-9 ]+$");
             if (isValid)
             {
                 return null;
@@ -192,12 +192,12 @@
 
          private string PhoneValidation()
         {
-            if (string.IsNullOrEmpty(this.phone))
+            if (string.IsNullOrEmpty(this.Phone))
             {
                 return null;
             }
 
-            bool isValid = Regex.IsMatch(this.phone, @"^[0-9+]+$");
+            bool isValid = Regex.IsMatch(this.Phone, @"^[0-9+]+$");
             if (isValid)
             {
                 return null;
@@ -210,12 +210,12 @@
 
          private string NameValidation()
          {
-             if (string.IsNullOrEmpty(this.name))
+             if (string.IsNullOrEmpty(this.Name))
              {
                  return null;
              }
 
-             bool isValid = Regex.IsMatch(this.name, @"^[a-zA-Z0-9 ]+$");
+             bool isValid = Regex.IsMatch(this.Name, @"^[a-zA-Z0-9 ]+$");
              if (isValid)
              {
                  return null;

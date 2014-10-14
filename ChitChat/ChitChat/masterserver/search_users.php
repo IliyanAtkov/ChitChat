@@ -9,7 +9,6 @@ Functions to login the user:
 if (isset($_POST['username'])) {
 	//Assing variables sent from the program
 	$username = 		mysql_real_escape_string($_POST['username']);
-	$password = 		mysql_real_escape_string($_POST['password']);
 
 	$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 
@@ -17,7 +16,7 @@ if (isset($_POST['username'])) {
 		$select_db = mysql_select_db(DB_NAME, $conn);
 
 		if ($select_db) {
-			$sql  = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
+			$sql  = "SELECT * FROM users WHERE username = '{$username}'";
 		
 			$result = mysql_query($sql, $conn);
 			if($result) // If executed successfuly
@@ -45,6 +44,10 @@ if (isset($_POST['username'])) {
 				{
 					echo "false";
 				}
+			}
+			else
+			{
+				echo "Not executed properly";
 			}
 		}
 		else {

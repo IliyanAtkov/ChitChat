@@ -33,22 +33,22 @@
         private string onlineStance;
 
         //Constructor
-        public User(int id, string username, string email, string joinDate, string ip, string info,
+        public User(int id, string username, string email, string joinDate, string info,
                   string city, string nation, string phone, string sex, string name, int isDonator, string onlineStance)
         {
-            this.Id = id;
-            this.Username = username;
-            this.Email = email;
-            this.JoinDate = joinDate;
-            this.IP = Misc.GetCurrentIPAddr();
-            this.Info = info;
-            this.City = city;
-            this.Nation = nation;
-            this.Phone = phone;
-            this.Gender = sex;
-            this.Name = name;
-            this.IsDonator = isDonator;
-            this.OnlineStance = onlineStance;
+            this.id = id;
+            this.username = username;
+            this.email = email;
+            this.joinDate = joinDate;
+            this.ip = Misc.GetCurrentIPAddr();
+            this.info = info;
+            this.city = city;
+            this.nation = nation;
+            this.phone = phone;
+            this.sex = sex;
+            this.name = name;
+            this.isDonator = isDonator;
+            this.onlineStance = onlineStance;
         }
 
 

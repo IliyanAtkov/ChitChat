@@ -23,6 +23,7 @@
     {
         /** Used to check if the user has logged in. By default it's false. */
         private bool loggedIn;
+        User user;
 
         public Login()
         {
@@ -50,12 +51,12 @@
         private void Login_btn_Click_1(object sender, RoutedEventArgs e)
         {
            // SendRequests sr = new SendRequests();
-            string canLogin = SendRequests.TryToLogInUser(username.Text, password.Password);
+            string canLogin = SendRequests.TryToLogInUser(username.Text, password.Password,ref user);
 
             if (canLogin == "true")
             {
                 this.LogInUser();
-                User user = new User(1, username.Text, "", "", "", "", "", "", "", "", "", 0, "");
+                //user = new User(1, username.Text, "", "", "", "", "", "", "", "", "", 0, "");
                 MainWindow mw = new MainWindow(this.LoggedIn, user);
                 mw.Show();
                 this.Close();
@@ -63,6 +64,7 @@
             else
             {
                 MessageBox.Show("Wrong Username or Password");
+                MessageBox.Show(canLogin);
             }
         }
 

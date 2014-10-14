@@ -1,16 +1,62 @@
 ﻿namespace ChitChat
 {
     using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.IO;
     using System.Net;
     using System.Security.Cryptography;
     using System.Text;
     using System.Windows;
     using ChitChat.Private;
+    using ChitChat.Public;
 
     public static class SendRequests
     {
-        public static string TryToLogInUser(string username, string password)
+        static string[] webResponceSeparators = { "<sep>" };
+        //Modify webResponceCount when adding or removing responce lines separated by <sep>
+        private static int webResponceCount = 15;
+
+        public static string AddFriend(int currentUserId, int friendId)
+        {
+            StringBuilder data = new StringBuilder();
+            data.Append("user_id=");
+            data.Append(currentUserId);
+            data.Append("&friend_id=");
+            data.Append(friendId);
+            string dataToSend = data.ToString();
+            string result = SendData(Constants.ADD_FRIEND_URI, dataToSend);
+            return result;
+        }
+
+        public static ObservableCollection<Friend> LoadFriends(int user_id)
+        {
+            string dataToSend = "id=" + user_id;
+            string result = SendData(Constants.LOAD_FRIENDS_URI, dataToSend);
+            string[] resultArray = Misc.SeparateFriends(result);
+            if (resultArray[0] == "true")
+            {
+                return Misc.FillFriendsInCollection(resultArray, 1);
+            }
+            //return result;
+            return null;
+        }
+
+        public static User SearchForUsers(string username)
+        {
+            string php_username = "username=" + username;
+            string result = SendData(Constants.SEARCH_USERS_URI, php_username);
+            string[] resultArray = result.Split(webResponceSeparators, StringSplitOptions.RemoveEmptyEntries);
+            if (resultArray[0] == "true")
+            {
+                Dictionary<string, string> userInfo = Misc.GetResultToAssocArray(resultArray, 1);
+                User user = new User(int.Parse(userInfo["id"]), username, userInfo["email"], userInfo["joinDate"], userInfo["info"], userInfo["city"], userInfo["nation"], userInfo["phone"], userInfo["sex"], userInfo["name"], int.Parse(userInfo["isDonator"]), userInfo["onlineStance"]);
+                return user;
+            }
+            return null;
+        }
+
+        public static string TryToLogInUser(string username, string password, ref User user)
         {
             StringBuilder data = new StringBuilder();
             string Username = username;
@@ -33,7 +79,13 @@
             string dataToSend = data.ToString();
 
             string result = SendData(Constants.LOGIN_URI, dataToSend);
-
+            string[] resultArray = result.Split(webResponceSeparators, webResponceCount, StringSplitOptions.None);
+            if (resultArray[0] == "true")
+            {
+                Dictionary<string, string> userInfo = Misc.GetResultToAssocArray(resultArray, 1);
+                user = new User(int.Parse(userInfo["id"]), Username, userInfo["email"], userInfo["joinDate"], userInfo["info"], userInfo["city"], userInfo["nation"], userInfo["phone"], userInfo["sex"], userInfo["name"], int.Parse(userInfo["isDonator"]), userInfo["onlineStance"]);
+                return resultArray[0];
+            }
             return result;
         }
 
@@ -61,19 +113,19 @@
                     data.Append("&sex=");
                     data.Append(sex);
                     data.Append("&country=");
-                    data.Append(registration.country);
+                    data.Append(registration.Country);
                     data.Append("&nation=");
-                    data.Append(registration.nation);
+                    data.Append(registration.Nation);
                     data.Append("&language=");
-                    data.Append(registration.language);
+                    data.Append(registration.Language);
                     data.Append("&name=");
-                    data.Append(registration.name);
+                    data.Append(registration.Name);
                     data.Append("&phone=");
-                    data.Append(registration.phone);
+                    data.Append(registration.Phone);
                     data.Append("&city=");
-                    data.Append(registration.city);
+                    data.Append(registration.City);
                     data.Append("&info=");
-                    data.Append(registration.info);
+                    data.Append(registration.Info);
                 }
 
                 string dataToSend = data.ToString();
@@ -112,7 +164,6 @@
             string dataToSend = sb.ToString();
 
             string result = SendData(Constants.CHECK_URI, dataToSend);
-
             if (result == "true")
             {
                 return true;

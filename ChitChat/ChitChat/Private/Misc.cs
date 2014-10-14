@@ -2,13 +2,21 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.IO;
     using System.Net;
     using System.Security.Cryptography;
     using System.Text;
+    using ChitChat.Public;
 
     public static class Misc
     {
+        static string[] webResponceInstanceSeparators = { "<new>" };
+        static int tempFriendsInfoCount = 3;
+        static string[] webResponceSeparators = { "<sep>" };
+        //Modify webResponceCount when adding or removing responce lines separated by <sep>
+        private static int webResponceCount = 15;
+
         public static string GetCurrentIPAddr()
         {
             string uri = Constants.IPCHECK_URI;
@@ -21,6 +29,33 @@
             string[] a3 = a2.Split('<');
             string a4 = a3[0];
             return a4;
+            //return "95.42.197.252";
+        }
+
+        public static  string[] SeparateFriends(string data)
+        {
+            string[] dataArr = data.Split(webResponceInstanceSeparators, StringSplitOptions.RemoveEmptyEntries);
+            return dataArr;
+            //string[][] dataArr2 = new string[dataArr.Length][];
+            //for (int i = 0; i < dataArr.Length; i++)
+            //{
+            //    dataArr2[i] = dataArr[i].Split(webResponceSeparators, StringSplitOptions.None);
+            //    dictionary = GetResultToAssocArray();
+            //}
+        }
+
+        public static ObservableCollection<Friend> FillFriendsInCollection(string[] dataArr, int startIndex)
+        {
+            string[][] dataArr2 = new string[dataArr.Length][];
+            Dictionary<string, string> dictionary;
+            ObservableCollection<Friend> collection = new ObservableCollection<Friend>();
+            for (int i = startIndex; i < dataArr.Length; i++)
+            {
+                dictionary = GetResultToAssocArray(dataArr[i].Split(webResponceSeparators, StringSplitOptions.RemoveEmptyEntries), 0);
+                Friend current = new Friend(int.Parse(dictionary["id"]), dictionary["name"], (Stances)Enum.Parse(typeof(Stances), dictionary["onlineStance"]));
+                collection.Add(current);
+            }
+            return collection;
         }
 
         public static Dictionary<string, string> GetResultToAssocArray(string result)
@@ -32,6 +67,20 @@
             for (int i = 0; i < newStr.Length; i++)
             {
                 string[] newestStr = newStr[i].Split(',');
+
+                myDic.Add(newestStr[0], newestStr[1]);
+            }
+
+            return myDic;
+        }
+        public static Dictionary<string, string> GetResultToAssocArray(string[] resultArray, int startIndex)
+        {
+            Dictionary<string, string> myDic = new Dictionary<string, string>();
+            char[] dictionarySeparators = { '=' };
+
+            for (int i = startIndex; i < resultArray.Length; i++)
+            {
+                string[] newestStr = resultArray[i].Split(dictionarySeparators, 2, StringSplitOptions.None);
 
                 myDic.Add(newestStr[0], newestStr[1]);
             }

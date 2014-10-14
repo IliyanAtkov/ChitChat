@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -31,6 +32,9 @@
         // Used to change Stances, by default - Online
         private Stances currentUserStance = Stances.Online;
 
+        //public ObservableCollection<Friend> FriendsList { get; set; }
+        public ObservableCollection<Friend> FriendsList { get; set; }
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -40,39 +44,18 @@
         {
             this.LoggedIn = loggedIn;
             this.User = user;
-
-            UsernameOutput.Content = this.User.Username;
+            FriendsList = SendRequests.LoadFriends(user.Id);
+           // User friend = new User(0, "test", "email", "date", "info", "city", "nation", "phone", "sex", "name", 0, "Online");
+            Friend friend = new Friend(0, "name_here", Stances.Online);
+            FriendsList.Add(friend);
+           // MessageBox.Show(SendRequests.LoadFriends(user.Id);
+            DataContext = this;
+            UsernameOutput.Content = user.Username;
         }
-
         public bool LoggedIn
         {
             get { return this.loggedIn; }
             set { this.loggedIn = value; }
-        }
-        
-        private void ChitChat_Online_Click(object sender, RoutedEventArgs e)
-        {
-            this.currentUserStance = Stances.Online;
-        }
-
-        private void ChitChat_Busy_Click(object sender, RoutedEventArgs e)
-        {
-            this.currentUserStance = Stances.Busy;
-        }
-
-        private void ChitChat_AFK_Click(object sender, RoutedEventArgs e)
-        {
-            this.currentUserStance = Stances.AFK;
-        }
-
-        private void ChitChat_Ghost_Click(object sender, RoutedEventArgs e)
-        {
-            this.currentUserStance = Stances.Ghost;
-        }
-
-        private void ChitChat_Offline_Click(object sender, RoutedEventArgs e)
-        {
-            this.currentUserStance = Stances.Offline;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -80,28 +63,16 @@
             this.Close();
         }
     
-        // Variant 2 - less code, but more computation == slower performance
         private void ChitChat_ChangeStatus_Click(object sender, RoutedEventArgs e)
         {
-            Button sourceButton = (Button)sender;
-            switch (sourceButton.Name)
-            {
-                case "Online":
-                    this.currentUserStance = Stances.Online;
-                    break;
-                case "Busy":
-                    this.currentUserStance = Stances.Busy;
-                    break;
-                case "AFK":
-                    this.currentUserStance = Stances.AFK;
-                    break;
-                case "Ghost":
-                    this.currentUserStance = Stances.Ghost;
-                    break;
-                case "Offline":
-                    this.currentUserStance = Stances.Offline;
-                    break;
-            }
+            MenuItem sourceButton = (MenuItem)sender;  
+            this.currentUserStance = (Stances)Enum.Parse(typeof(Stances), sourceButton.Name);
+        }
+
+        private void AddFriends_Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddFriendsTest addFriends_Window = new AddFriendsTest(this.User);
+            addFriends_Window.Show();
         }
     }
 }
