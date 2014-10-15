@@ -39,7 +39,7 @@
                 return Misc.FillFriendsInCollection(resultArray, 1);
             }
             //return result;
-            return null;
+            return new ObservableCollection<Friend>();
         }
 
         public static User SearchForUsers(string username)
